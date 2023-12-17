@@ -1,0 +1,19 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is a basic react tutorial",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarthak19360/namaste-react.git"
+  },
+  "author": "Sarthak Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarthak19360/namaste-react/issues"
+  },
+  "homepage": "https://github.com/sarthak19360/namaste-react#readme"
+}
