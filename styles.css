@@ -1,7 +1,8 @@
-*{
-    padding: 0;
-    border: 0;
-    color: grey;
+* {
+  padding: 0;
+  border: 0;
 }
 
-
+.heading {
+  color: red;
+}
