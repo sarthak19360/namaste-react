@@ -1,8 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 * {
   padding: 0;
   border: 0;
 }
 
-.heading {
-  color: red;
+.app {
+  /* display: flex;
+  flex-direction: column; */
+  margin: 0 auto;
+  width: 85%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+  background-color: rgb(154, 227, 166);
+  font-family: "Lato", sans-serif;
+}
+
+.nav-items ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.list-item {
+  padding: 10px;
+}
+
+.logo {
+  margin: auto 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.search-bar {
+  padding: 5px 20px;
+}
+
+.search-bar input {
+  border: 2px solid black;
+  height: 30px;
+  width: 300px;
+  font-size: 15px;
+}
+
+.search-bar button {
+  height: 30px;
+  width: 50px;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 12px;
+}
+
+.search-bar button:hover {
+  background-color: grey;
+  color: white;
+}
+
+.res-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.res-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+  align-items: center;
+  width: fit-content;
+}
+
+.res-logo {
+  height: 150px;
+  width: 200px;
+  border-radius: 20px;
 }
