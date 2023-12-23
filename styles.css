@@ -5,9 +5,13 @@
   border: 0;
 }
 
+body {
+  padding: 0;
+  bottom: 0;
+  margin: 0;
+}
+
 .app {
-  /* display: flex;
-  flex-direction: column; */
   margin: 0 auto;
   width: 85%;
 }
@@ -80,11 +84,53 @@
   padding: 5px;
   margin: 5px;
   align-items: center;
-  width: fit-content;
+  justify-content: center;
+  width: 230px;
+}
+
+.res-name,
+.res-logo,
+.res-rating,
+.res-eta,
+.res-desc {
+  padding: 0;
+  border: 0;
+  margin: 10px;
+}
+
+.res-name {
+  font-size: 22px;
+}
+
+.res-rating {
+  font-size: 15px;
 }
 
 .res-logo {
   height: 150px;
   width: 200px;
   border-radius: 20px;
+}
+
+.res-cuisines,
+.res-area {
+  -webkit-font-smoothing: antialiased;
+  font-family: Basis_Grotesque_Pro;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.6);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.res-desc {
+  display: grid;
+  align-items: center;
+  gap: 2px;
 }
