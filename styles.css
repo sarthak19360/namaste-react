@@ -58,16 +58,19 @@ body {
 }
 
 .search-bar button {
-  height: 30px;
-  width: 50px;
+  background-color: rgb(51, 49, 49);
+  color: white;
+  width: fit-content;
+  padding: 10px;
   border-radius: 10px;
   margin: 10px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .search-bar button:hover {
-  background-color: grey;
-  color: white;
+  background-color: rgb(163, 232, 117);
+  color: rgb(52, 50, 50);
+  cursor: pointer;
 }
 
 .res-container {
