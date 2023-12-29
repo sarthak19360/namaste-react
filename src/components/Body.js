@@ -2,6 +2,7 @@ import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -25,6 +26,15 @@ const Body = () => {
         ?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return (
+      <h1 className="center">
+        Looks like internet connection is off. Try turning it on!!
+      </h1>
+    );
+  }
 
   if (listOfRestaurants.length === 0) {
     return <ShimmerUI />;
