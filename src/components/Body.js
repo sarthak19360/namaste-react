@@ -1,13 +1,16 @@
 import ResCard, { withVegLabel } from "./ResCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -64,13 +67,14 @@ const Body = () => {
                   .includes(searchText.toLowerCase());
               });
               setFilteredRestaurants(filteredList);
+              setSearchText("");
             }}
           >
             Search
           </button>
         </div>
         <button
-          className="bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 ml-8"
+          className="bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 mx-8"
           onClick={() => {
             const filteredRestaurants = listOfRestaurants.filter((res) => {
               return res.info.avgRating > 4.3;
@@ -80,6 +84,15 @@ const Body = () => {
         >
           Search for Top Rated Restaurants
         </button>
+        <label className="pt-1">UserName: </label>
+        <input
+          type="text"
+          className="border-4 border-solid px-2"
+          value={loggedInUser}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        />
       </div>
       <div className="flex flex-wrap justify-center">
         {filteredRestaurants.map((restaurant) => (
