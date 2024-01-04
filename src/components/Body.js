@@ -1,4 +1,4 @@
-import ResCard from "./ResCard";
+import ResCard, { withVegLabel } from "./ResCard";
 import { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
@@ -18,11 +18,11 @@ const Body = () => {
     );
     const json = await data.json();
     setListOfRestaurants(
-      json?.data?.success?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.success?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.success?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.success?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };
@@ -40,12 +40,14 @@ const Body = () => {
     return <ShimmerUI />;
   }
 
+  const ResCardVeg = withVegLabel(ResCard);
+
   return (
-    <div className="body">
-      <div className="search-bar">
+    <div className="my-2 flex flex-col justify-center">
+      <div className="flex justify-center">
         <div>
           <input
-            className="search"
+            className="px-2 py-1 w-56 mr-2 border-2 rounded-lg"
             type="text"
             placeholder="Search here"
             value={searchText}
@@ -54,7 +56,7 @@ const Body = () => {
             }}
           />
           <button
-            className="btn"
+            className="bg-green-100 px-2 py-1 rounded-lg hover:bg-green-200"
             onClick={() => {
               const filteredList = listOfRestaurants.filter((res) => {
                 return res.info.name
@@ -68,7 +70,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="btn"
+          className="bg-gray-200 px-2 py-1 rounded-lg hover:bg-gray-300 ml-8"
           onClick={() => {
             const filteredRestaurants = listOfRestaurants.filter((res) => {
               return res.info.avgRating > 4.3;
@@ -79,14 +81,18 @@ const Body = () => {
           Search for Top Rated Restaurants
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap justify-center">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             style={{ textDecoration: "none", color: "black" }}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <ResCard restaurant={restaurant} />
+            {restaurant.info?.veg ? (
+              <ResCardVeg restaurant={restaurant} />
+            ) : (
+              <ResCard restaurant={restaurant} />
+            )}
           </Link>
         ))}
       </div>
