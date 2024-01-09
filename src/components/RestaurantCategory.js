@@ -1,6 +1,5 @@
-import { ItemList } from "./ItemList";
+import ItemList from "./ItemList";
 import React from "react";
-import { useState } from "react";
 const RestaurantCategory = ({
   category,
   itemCards,
@@ -9,7 +8,6 @@ const RestaurantCategory = ({
 }) => {
   return (
     <div
-      key={category}
       className="border-solid border-b-8 p-2 cursor-pointer"
       onClick={() => {
         setShowIndex();
@@ -19,17 +17,12 @@ const RestaurantCategory = ({
         <div>
           {category}({itemCards.length})
         </div>
-        <div>{"⬇️"}</div>
+        <div>{showItems ? "⬆️" : "⬇️"}</div>
       </div>
       {itemCards?.map((itemCard) => {
-        const { imageId, description } = itemCard.card.info;
         return (
           showItems && (
-            <ItemList
-              itemCard={itemCard}
-              description={description}
-              imageId={imageId}
-            />
+            <ItemList key={itemCard.card.info.id} itemCard={itemCard} />
           )
         );
       })}

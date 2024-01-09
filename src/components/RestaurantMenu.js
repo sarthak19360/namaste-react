@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState(null);
   const jsonData = useRestaurantMenu(resId);
   const resInfo = jsonData?.data?.cards[0]?.card?.card?.info;
   const resMenu =
@@ -95,7 +95,7 @@ const RestaurantMenu = () => {
             <RestaurantCategory
               key={category}
               category={category}
-              showItems={index === showIndex ? true : false}
+              showItems={index === showIndex}
               setShowIndex={() => setShowIndex(index)}
               itemCards={itemCards}
             />
