@@ -45,7 +45,10 @@ const Header = () => {
 
           <li className="p-8">
             <Link style={{ textDecoration: "none", color: "black" }} to="/cart">
-              Cart - ({cartItems.length})
+              <div className="flex">
+                <span>Cart</span>
+                <span className="font-medium">({cartItems.length})</span>
+              </div>
             </Link>
           </li>
           <li className="p-8">

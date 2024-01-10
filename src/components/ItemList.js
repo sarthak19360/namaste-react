@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MENU_IMG } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import { addItem, removeItem } from "../utils/cartSlice";
 const ItemList = ({ itemCard }) => {
   const { name, price, defaultPrice, imageId, description } =
     itemCard?.card?.info || {};
@@ -9,6 +9,11 @@ const ItemList = ({ itemCard }) => {
   const handleAddItem = (item) => {
     dispatch(addItem(item));
     setCount(count + 1);
+  };
+
+  const handleDeleteItem = (item) => {
+    dispatch(removeItem(item));
+    setCount(count - 1);
   };
 
   const [count, setCount] = useState(0);
@@ -24,14 +29,17 @@ const ItemList = ({ itemCard }) => {
           {count === 0 ? (
             <button
               onClick={() => handleAddItem(itemCard)}
-              className="text-sm p-2 bg-black rounded-lg border-solid border-2 shadow-lg mx-8 mt-[74] text-white"
+              className="text-sm p-2 bg-green-400 rounded-lg border-solid border-2 shadow-lg mx-8 mt-[74] text-gray-600"
             >
               ADD +
             </button>
           ) : (
-            <div className="text-sm p-2 bg-green-300 rounded-lg border-solid border-2 shadow-lg mx-8 mt-[74] text-white">
-              ADDED
-            </div>
+            <button
+              onClick={() => handleDeleteItem(itemCard)}
+              className="text-sm p-2 bg-red-500 rounded-lg border-solid border-2 shadow-lg mx-8 mt-[74] text-white"
+            >
+              REMOVE -
+            </button>
           )}
         </div>
         <img
